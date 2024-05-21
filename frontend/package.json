@@ -1,6 +1,6 @@
 {
-  "name": "livebird_frontend",
-  "version": "1.0.0",
+  "name": "liveEasy_frontend",
+  "version": "0.0.0",
   "description": "Capstone project For PROG8750-24S-Sec12-Capstone (Web Development)",
   "scripts": {
     "ng": "ng",
