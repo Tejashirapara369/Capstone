@@ -1,0 +1,19 @@
+{
+  "name": "livebird_backend",
+  "version": "1.0.0",
+  "description": "Capstone project For PROG8750-24S-Sec12-Capstone (Web Development)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tejashirapara369/Capstone.git"
+  },
+  "author": "Tejas, Yash, Meet, Henil, Vivek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tejashirapara369/Capstone/issues"
+  },
+  "homepage": "https://github.com/Tejashirapara369/Capstone#readme"
+}
