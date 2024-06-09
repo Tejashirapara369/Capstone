@@ -3,13 +3,14 @@ export type LoginPayload = {
     password: string;
 };
 
-export type LoginResponse = {
+export type AuthResponse = {
     status: string;
     token: string;
     data: {
         user: User;
     };
 };
+
 
 export class User {
     _id!: string;
@@ -27,3 +28,12 @@ export enum UserRole {
     guide = 'guide',
     leadGuide = 'lead-guide'
 }
+
+export type RegisterPayload = {
+    name: string;
+    email: string;
+    roles: UserRole;
+    password: string;
+    passwordConfirm: string;
+};
+
