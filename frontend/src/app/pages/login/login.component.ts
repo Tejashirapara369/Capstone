@@ -4,7 +4,7 @@ import { COMPANY_NAME } from '../../constant/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
-import { LoginResponse } from '../../models/authentication.model';
+import { AuthResponse } from '../../models/authentication.model';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,7 @@ export class LoginComponent {
   }
 
   login(): void {
-    this.authenticationService.login(this.loginForm.value).subscribe((resp: LoginResponse) => {
+    this.authenticationService.login(this.loginForm.value).subscribe((resp: AuthResponse) => {
       localStorage.setItem("authToken", resp.token);
       this.router.navigate(['/']);
     });
