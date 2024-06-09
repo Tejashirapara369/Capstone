@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const { convert } = require('html-to-text');
+const { convert } = require("html-to-text");
 
 const options = {
   wordwrap: 130,
@@ -15,7 +15,6 @@ module.exports = class Email {
   }
 
   newTransport() {
-    
     return nodemailer.createTransport({
       service: `gmail`,
       auth: {
@@ -29,10 +28,16 @@ module.exports = class Email {
     //1) Render HTMl mail template
     let html;
     if (subject === "Welcome to the LiveEasy")
-      html = `<h1> Welcome ${this.firstName} in LiveEasy </h1>`;
+      html = `
+        <h1 style="text-align: center;"> Welcome ${this.firstName} in LiveEasy </h1>
+        <p style="text-align: center;">Embark on a journey where every detail is meticulously planned just for you. Whether it's a serene beach getaway, an adventurous mountain trek, or a cultural city tour, our experts craft personalized itineraries that transform your travel dreams into reality. Explore the world, discover hidden gems, and create memories that will last a lifetime. Book your next adventure today with LiveEasy and travel beyond expectations.</p>
+      `;
     else
-      html = `<label>Your new password is : </label> 
-            <p>${this.password}</p>`;
+      html = `
+        <h1 style="text-align: center;"> LiveEasy </h1>
+        <label style="text-align: center;">Your new password is : </label> 
+        <p style="text-align: center;">${this.password}</p>
+      `;
 
     //2) Define the email options
     const mailOptions = {
