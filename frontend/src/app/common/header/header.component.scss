@@ -1,0 +1,8 @@
+@import "../../../assets/scss/variables";
+
+.navbar {
+  z-index: 1040;
+  &.navbar-dark {
+    background-color: $primary-color !important;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../../assets/scss/variables";
+
+footer {
+  background-color: $secondary-color !important;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+}
