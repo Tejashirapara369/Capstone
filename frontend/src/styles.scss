@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../src/assets/scss/variables";
+
+body {
+  font-family: $font-family-base !important;
+  font-size: $font-size-base !important;
+  color: $text-color !important;
+  background-color: $background-color !important;
+  line-height: $line-height-base !important;
+}
+
+.btn-primary {
+  background-color: $primary-color !important;
+  border: 1px solid darken($primary-color, 10%) !important;
+  border-radius: $border-radius-base !important;
+  color: #fff !important;
+  padding: $spacing-unit $spacing-unit * 2 !important;
+  font-family: $font-family-base !important;
+  font-size: $font-size-base !important;
+
+  &:hover {
+    background-color: lighten($primary-color, 10%) !important;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary-color !important;
+  border: 1px solid darken($secondary-color, 10%) !important;
+  border-radius: $border-radius-base !important;
+  color: #392f5a !important; // Use primary color or another appropriate color for contrast
+  padding: $spacing-unit $spacing-unit * 2 !important;
+  font-family: $font-family-base !important;
+  font-size: $font-size-base !important;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%) !important;
+  }
+}
+
+.cp-text-primary {
+  color: $primary-color !important;
+}
+
+.cp-text-secondary {
+  color: $secondary-color !important;
+}
+
+.cp-border-primary {
+  border-color: $border-color !important;
+}
+
