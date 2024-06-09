@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="mx-auto mt-3 w-50 p-4 login-section" [formGroup]="loginForm">
+    <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" id="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group mt-2">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+    </div>
+
+    <div class="w-50 mx-auto text-center mt-3">
+        <p>New User? <a routerLink="/register">Register Now</a></p>
+        <button class="btn btn-primary w-100" (click)="login()">Log in</button>
+    </div>
+</div>
