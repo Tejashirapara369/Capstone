@@ -15,7 +15,6 @@ module.exports = class Email {
   }
 
   newTransport() {
-    console.log('process.env.EMAIL_PASSWORD', process.env.EMAIL_PASSWORD)
     
     return nodemailer.createTransport({
       service: `gmail`,

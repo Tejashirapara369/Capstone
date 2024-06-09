@@ -31,16 +31,27 @@ const createAndSendToken = (user, statusCode, res) => {
 exports.signup = catchAsync(async (req, res) => {
   let newUser;
   try {
-    console.log('req.body', req.body)
-    
     newUser = await User.create(req.body);
-
-    console.log('newUser', newUser)
-    
   } catch (err) {
     throw new AppError(err.message, 400, res);
   }
   const url = `${req.protocol}://${req.get("host")}/me  `;
   await new Email(newUser, url).sendWelcome();
   createAndSendToken(newUser, 200, res);
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new AppError("Please Provide email and password", 400, res));
+  }
+  const user = await User.findOne({ email })
+    .select("+password")
+    .select("+active");
+  if (!user || !(await user.correctPassword(password, user.password))) {
+    return next(
+      new AppError("Please enter correct email & password", 401, res)
+    );
+  }
+  createAndSendToken(user, 200, res);
 });
