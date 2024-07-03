@@ -1,10 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const tourController = require('../controllers/tourController');
-const review = require('../models/review.model');
+const tourController = require("../controllers/tourController");
 
-router.route('/').get(tourController.getAllTours);
+router.route("/").get(tourController.getAllTours);
 
-router.route('/:slug').get(tourController.getTour)
+router
+  .route("/top-tour")
+  .get(tourController.aliasTopTours, tourController.getAllTours);
+
+router.route("/:slug").get(tourController.getTour);
 
 module.exports = router;
