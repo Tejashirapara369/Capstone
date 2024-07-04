@@ -11,7 +11,7 @@ export class TourShortInfo {
 
 export class Tour {
     startLocation?: StartLocation;
-    ratingsAverage?: number;
+    ratingsAverage: number = 0;
     ratingsQuantity?: number;
     images?: string[];
     startDates: string[] = [];

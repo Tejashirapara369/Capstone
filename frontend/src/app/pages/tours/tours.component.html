@@ -19,7 +19,9 @@
                         <div><i class="bi bi-star-fill"></i>{{tour.ratingsAverage}} rating ({{tour.ratingsQuantity}})
                         </div>
                     </div>
-                    <a class="btn btn-primary" [routerLink]="['tours', tour.slug]">DETAILS</a>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary w-100" [routerLink]="[tour.slug]">Book Now</a>
+                    </div>
                 </div>
             </div>
         </div>

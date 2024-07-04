@@ -11,8 +11,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbCarouselModule, NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbDatepickerModule, NgbDropdownModule, NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToursComponent } from './pages/tours/tours.component';
+import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ToursComponent } from './pages/tours/tours.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    ToursComponent
+    ToursComponent,
+    TourDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,9 @@ import { ToursComponent } from './pages/tours/tours.component';
     HttpClientModule,
     NgbModule,
     NgbCarouselModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgbRatingModule,
+    NgbDropdownModule
   ],
   providers: [
     provideClientHydration()

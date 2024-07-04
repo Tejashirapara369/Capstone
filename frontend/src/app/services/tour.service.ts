@@ -20,4 +20,8 @@ export class TourService {
   getAllTours(): Observable<any> {
     return this.http.get(`${ENVIRONMENT_URL}`);
   }
+
+  getTourBySlug(slug: string): Observable<any> {
+    return this.http.get(`${ENVIRONMENT_URL}/${slug}`);
+  }
 }
