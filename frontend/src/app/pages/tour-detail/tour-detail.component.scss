@@ -1,0 +1,9 @@
+ngb-rating ::ng-deep span {
+    font-size: 3rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+    ngb-rating ::ng-deep span {
+        font-size: 2rem !important;
+    }
+}

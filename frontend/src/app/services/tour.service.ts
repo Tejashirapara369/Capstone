@@ -16,4 +16,12 @@ export class TourService {
   getTopFeaturedTour(): Observable<any> {
     return this.http.get(`${ENVIRONMENT_URL}/top-tour`);
   }
+
+  getAllTours(): Observable<any> {
+    return this.http.get(`${ENVIRONMENT_URL}`);
+  }
+
+  getTourBySlug(slug: string): Observable<any> {
+    return this.http.get(`${ENVIRONMENT_URL}/${slug}`);
+  }
 }

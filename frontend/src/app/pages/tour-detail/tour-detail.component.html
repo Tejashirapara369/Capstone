@@ -1,0 +1,54 @@
+<div class="container my-md-5 my-3">
+    <!-- <ngb-rating [rate]="4.1" [readonly]="true" [max]="5" /> -->
+    <div class="row">
+        <div class="col-md-5 d-flex flex-column align-items-center">
+            <img src="https://placehold.co/400x400" alt="">
+            <button class="btn btn-primary mt-3">
+                <h3 class="mb-0">Book Now</h3>
+            </button>
+        </div>
+        <div class="col-md-7">
+            <h2 class="text-uppercase mt-3 mt-md-0 mb-3">{{tourDetails.name }}</h2>
+            <h5>{{tourDetails.summary | titlecase}}</h5>
+            <p>{{tourDetails.description}}</p>
+
+            <div class="mb-2"><span class="fw-bold mb-5">Departure Point: </span>
+                {{tourDetails.startLocation?.description}}
+            </div>
+            <div class="mb-2"><span class="fw-bold mb-5">Departure </span>
+                {{tourDetails.duration}}
+            </div>
+            <div class="mb-2"><span class="fw-bold mb-5">Difficulty Level: </span>
+                {{tourDetails.difficulty | titlecase}}
+            </div>
+
+            <div>
+                <h6 class="fw-bold">Location:</h6>
+                <ul>
+                    <li *ngFor="let location of tourDetails.locations">{{location.description}}</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-end mb-3">
+                <ngb-rating [max]="5" [rate]="tourDetails.ratingsAverage" [readonly]="true"></ngb-rating>&nbsp;
+                <div class="mb-md-3 mb-2 fs-4">({{tourDetails.ratingsQuantity}} Reviews)</div><br>
+            </div>
+            <div class="mb-2"><span class="fw-bold me-2">Select date:</span>
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{selectedDate ? (selectedDate | date) : "Select Departure Date"}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem *ngFor="let date of tourDetails.startDates"
+                            (click)="selectedDate = date">{{date | date}}</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row mt-5">
+            <h4>Review</h4>
+        </div>
+    </div>
+</div>
