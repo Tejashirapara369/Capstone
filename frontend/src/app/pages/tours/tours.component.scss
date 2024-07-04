@@ -1,0 +1,37 @@
+@import "../../../assets/scss/_variables.scss";
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: -50px;
+  display: inline-block;
+}
+
+.card-text {
+  color: #333;
+}
+
+.tag-section>div {
+
+  border: 1px solid $primary-color;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+}

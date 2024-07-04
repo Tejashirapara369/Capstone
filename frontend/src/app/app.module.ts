@@ -12,6 +12,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule, NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToursComponent } from './pages/tours/tours.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbCarouselModule, NgbDatepickerModule, NgbModule } from '@ng-bootstrap
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ToursComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<div class="container py-4">
+    <div class="row g-4">
+        <div class="col-md-4" *ngFor="let tour of tours">
+            <div class="card">
+                <img src="path/to/your/image1.jpg" onerror="src='https://placehold.co/400x200'" class="card-img-top"
+                    alt="Paradise on Earth">
+                <div class="card-body">
+                    <h5 class="card-title">{{tour.name | uppercase}}</h5>
+                    <p class="card-text mb-1">{{tour.difficulty | titlecase}} {{tour.duration}}-DAY TOUR</p>
+                    <p class="card-text text-truncate">{{tour.summary | titlecase}}</p>
+
+                    <div class="d-flex gap-2 flex-wrap tag-section mb-3">
+                        <div><i class="bi bi-geo-alt"></i> {{tour.startLocation?.address ||
+                            tour.startLocation?.description}}</div>
+                        <div><i class="bi bi-calendar3"></i> {{ tour.startDates[0] | date}}</div>
+                        <div><i class="bi bi-geo"></i> {{tour.locations.length}} stops</div>
+                        <div><i class="bi bi-people"></i> {{tour.maxGroupSize}} people</div>
+                        <div><i class="bi bi-cash me-2"></i>${{tour.price}} per person</div>
+                        <div><i class="bi bi-star-fill"></i>{{tour.ratingsAverage}} rating ({{tour.ratingsQuantity}})
+                        </div>
+                    </div>
+                    <a class="btn btn-primary" [routerLink]="['tours', tour.slug]">DETAILS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

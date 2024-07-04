@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { COMPANY_NAME } from '../../constant/common';
 import { TourService } from '../../services/tour.service';
-import { Tour } from '../../models/tours.model';
+import { TourShortInfo } from '../../models/tours.model';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   activities: string[] = ['camping', 'hiking', 'cycling', 'kayaking', 'scuba', 'paragliding'];
 
-  topTours: Tour[] = [];
+  topTours: TourShortInfo[] = [];
 
   constructor(private title: Title, private tourService: TourService) {
     title.setTitle(COMPANY_NAME + ': Home');
