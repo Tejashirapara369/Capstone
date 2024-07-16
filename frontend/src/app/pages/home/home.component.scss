@@ -57,9 +57,17 @@
   background: rgba(0, 0, 0, 0.7);
 }
 
+.activity-section {
+  width: 75%;
+}
+
 @media only screen and (max-width: 768px) {
   .carousel-image {
     width: 100% !important;
     height: 300px;
+  }
+
+  .activity-section {
+    width: 100%;
   }
 }

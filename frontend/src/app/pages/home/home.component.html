@@ -28,8 +28,8 @@
             kayaking, canoeing, or exploring vibrant underwater worlds through snorkeling and scuba diving offers
             unparalleled excitement.</p>
 
-        <div class="row g-3 w-75 mx-auto">
-            <div class="col-sm-4 col-xs-6" *ngFor="let activity of activities">
+        <div class="row g-1 g-sm-3 activity-section mx-auto">
+            <div class="col-sm-4 col-4" *ngFor="let activity of activities">
                 <div class="image-container cursor-pointer" routerLink="tours">
                     <img [src]="'assets/activities/'+activity+'.png'" [alt]="activity" class="img-fluid">
                     <div class="overlay">

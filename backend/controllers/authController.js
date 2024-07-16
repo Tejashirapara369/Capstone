@@ -3,6 +3,7 @@ const User = require("../models/user.model");
 const AppError = require("../utils/appError");
 const Email = require("../utils/email");
 const catchAsync = require("../utils/catchAsync");
+const { promisify } = require("util");
 
 const createAndSendToken = (user, statusCode, res) => {
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -55,3 +56,46 @@ exports.login = catchAsync(async (req, res, next) => {
   }
   createAndSendToken(user, 200, res);
 });
+
+exports.protect = catchAsync(async (req, res, next) => {
+  let token;
+  //1 check that in req header token exist
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+  if (!token) {
+    next(new AppError("You are not logged in , please login", 401, res));
+  }
+  //2 verify that token is correct
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  //3 check if User Exist
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    next(
+      new AppError("the User beloging to this token No Longer Exist", 401, res)
+    );
+  }
+
+  //4 check if token given before password is expire
+  if (currentUser.isPasswordChanged(decoded.id)) {
+    next(new AppError("Password is changed please Login Again", 401, res));
+  }
+  req.user = currentUser;
+  res.locals.user = currentUser;
+  next();
+});
+
+exports.restrict = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.roles)) {
+      return next(
+        new AppError("You are not Authorized to perform this action", 403, res)
+      );
+    }
+    next();
+  };
+};
