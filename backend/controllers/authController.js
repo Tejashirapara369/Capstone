@@ -57,6 +57,28 @@ exports.login = catchAsync(async (req, res, next) => {
   createAndSendToken(user, 200, res);
 });
 
+exports.forgetPassword= catchAsync(async(req,res,next)=>{
+  //check if user exist 
+  const user=await User.findOne({email:req.body.email});
+  const resetPassword = Math.random().toString(36).slice(2) +Math.random().toString(36).toUpperCase().slice(2);
+  const resetLink = null;
+  if(!user){
+      next(new AppError('There is no User With this email address',404,res));
+  }
+  try{
+
+      user.password = resetPassword;
+      user.passwordConfirm  = resetPassword;
+      await new Email(user,resetLink).sendResetPassword()
+      await user.save();
+      res.status(200).json({
+          status:'success',
+          message:'mail send Successfully'
+  })
+  }catch(err){
+  }
+})
+
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
   //1 check that in req header token exist
