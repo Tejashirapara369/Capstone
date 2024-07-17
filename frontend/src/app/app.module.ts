@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule, NgbDatepickerModule, NgbDropdownModule, NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToursComponent } from './pages/tours/tours.component';
 import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
     RegisterComponent,
     NotFoundComponent,
     ToursComponent,
-    TourDetailComponent
+    TourDetailComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
     NgbCarouselModule,
     NgbDatepickerModule,
     NgbRatingModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    NgxStripeModule.forRoot(),
   ],
   providers: [
     provideClientHydration()
