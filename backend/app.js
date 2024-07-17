@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const userRouter = require("./routes/userRoutes");
 const tourRouter = require("./routes/tourRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ dotenv.config({ path: "./config.env" });
 app.use("/api/user", userRouter);
 app.use("/api/tour", tourRouter);
 app.use("/api/review", reviewRouter);
+app.use('/api/booking',bookingRouter);
 
 const port = process.env.PORT || 5000;
 const DB = process.env.DATABASE;

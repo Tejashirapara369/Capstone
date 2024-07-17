@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
     this.tourService.getTopFeaturedTour().subscribe(resp => {
       this.topTours = resp.data?.data;
       this.topTours.length = 3;
-      console.log('this.topTours', this.topTours);
     });
   }
 
