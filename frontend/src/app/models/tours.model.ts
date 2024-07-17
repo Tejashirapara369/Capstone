@@ -5,6 +5,7 @@ export class TourShortInfo {
     price?: number;
     tourWeekend?: any;
     id?: string;
+    _id?: string;
 }
 
 
