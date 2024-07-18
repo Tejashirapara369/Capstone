@@ -16,6 +16,7 @@ import { ToursComponent } from './pages/tours/tours.component';
 import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { NgxStripeModule } from 'ngx-stripe';
     NgbDatepickerModule,
     NgbRatingModule,
     NgbDropdownModule,
-    NgxStripeModule.forRoot(),
+    NgxStripeModule.forRoot(environment.stripeKey),
   ],
   providers: [
     provideClientHydration()

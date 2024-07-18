@@ -18,7 +18,10 @@
                 </ul>
 
                 <div>
-                    <a routerLink="login" class="text-light fs-5 text-decoration-none btn">Log in </a>
+                    <a *ngIf="!isLoggedIn" routerLink="login" class="text-light fs-5 text-decoration-none btn">Log in
+                    </a>
+                    <a *ngIf="isLoggedIn" class="text-light fs-5 text-decoration-none btn cursor-pointer"
+                        (click)="logout()">Log out </a>
                 </div>
             </div>
         </div>

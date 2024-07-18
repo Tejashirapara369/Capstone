@@ -1,15 +1,26 @@
 <div class="container my-md-5 my-3">
-    <!-- @if(elementsOptions.clientSecret) {
-    <ngx-stripe-elements [stripe]="stripe" [elementsOptions]="elementsOptions">
-        <ngx-stripe-payment [options]="stripeOptions" />
-    </ngx-stripe-elements>
-    } -->
 
     <div class="row">
         <div class="col-6 offset-3">
-            <div class="form-group">
-                <label for=""></label>
+            <h3 class="text-center fw-bold">Checkout</h3>
+            <div class="my-2">
+                <span class="fw-bolder">Tour Name: </span>{{tourDetails.name}}
             </div>
+            <div class="my-2">
+                <span class="fw-bolder">Tour Price: </span>{{tourDetails.price}}
+            </div>
+            <div class="my-2">
+                <span class="fw-bolder">Total: </span>{{tourDetails.price}}
+            </div>
+
+            <div class="form-group mb-4" ngxStripeCardGroup [elementsOptions]="elementsOptions">
+                <label class="form-label fw-bolder">Enter payment details</label>
+                <ngx-stripe-elements [stripe]="stripe" class="form-control" [elementsOptions]="elementsOptions">
+                    <ngx-stripe-card [options]="cardOptions" />
+                </ngx-stripe-elements>
+            </div>
+
+            <button class="btn btn-primary" type="submit" (click)="pay()">Checkout Now</button>
         </div>
     </div>
 

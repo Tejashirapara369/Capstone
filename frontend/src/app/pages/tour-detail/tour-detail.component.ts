@@ -26,7 +26,6 @@ export class TourDetailComponent implements OnInit {
     const slugUrl = this.route.snapshot.params['slug'];
     this.tourService.getTourBySlug(slugUrl).subscribe((resp) => {
       this.tourDetails = resp?.tour;
-      console.log('this.tourDetails', this.tourDetails);
     });
   }
 }

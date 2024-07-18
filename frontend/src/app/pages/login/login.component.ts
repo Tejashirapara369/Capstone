@@ -30,7 +30,6 @@ export class LoginComponent {
 
   login(): void {
     this.authenticationService.login(this.loginForm.value).subscribe((resp: AuthResponse) => {
-      localStorage.setItem("authToken", resp.token);
       this.router.navigate(['/']);
     });
   }

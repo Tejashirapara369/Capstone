@@ -6,22 +6,15 @@ const stripe = require("stripe")(
 const Tour = require("../models/tour.model");
 
 exports.getSession = catchAsync(async (req, res, next) => {
-  const tourId = req.params.tourId;
+  const slug = req.params.tourId;
 
-  console.log(`Received tourId: ${tourId}`);
-
-  // Validate the tour ID
-  if (!mongoose.Types.ObjectId.isValid(tourId)) {
-    return res.status(400).send("Invalid tour ID");
-  }
-
-  const tour = await Tour.findOne({ id: tourId });
+  const tour = await Tour.findOne({ slug });
 
   if (tour) {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       success_url: `http://localhost:4200/MyBookings?tour=${req.params.tourId}&user=${req.user.id}&price=${tour.price}`,
-      cancel_url: `http://localhost:4200/tour/${tour.slug}`,
+      cancel_url: `http://localhost:4200/tours/${tour.slug}`,
       customer_email: req.user.email,
       client_reference_id: req.params.tourId,
       line_items: [
@@ -35,11 +28,12 @@ exports.getSession = catchAsync(async (req, res, next) => {
               images: [`https://www.natours.dev/img/tours/tour-2-1.jpg`],
             },
           },
-          quantity: 1
+          quantity: 1,
         },
       ],
-       mode: 'payment'
+      mode: "payment",
     });
+    
     res.status(200).json({
       status: "success",
       session,
