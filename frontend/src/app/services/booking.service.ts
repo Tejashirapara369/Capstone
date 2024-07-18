@@ -5,8 +5,6 @@ import { environment } from '../../environments/environment';
 import { Stripe } from '@stripe/stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-// const stripe = await loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
 const ENVIRONMENT_URL = environment.baseUrl + '/booking';
 
 @Injectable({
