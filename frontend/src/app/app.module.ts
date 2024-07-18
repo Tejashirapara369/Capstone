@@ -17,6 +17,8 @@ import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from '../environments/environment';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,13 @@ import { environment } from '../environments/environment';
     NgbDatepickerModule,
     NgbRatingModule,
     NgbDropdownModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     NgxStripeModule.forRoot(environment.stripeKey),
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    ToastrService
   ],
   bootstrap: [AppComponent]
 })
