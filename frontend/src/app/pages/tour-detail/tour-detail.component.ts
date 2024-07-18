@@ -63,7 +63,7 @@ export class TourDetailComponent implements OnInit {
         this.toastr.success("Review submitted successfully", "Success");
       },
       error: (error) => {
-        this.toastr.success("Already Review Submitted");
+        this.toastr.error("Already Review Submitted");
       }
     });
   }

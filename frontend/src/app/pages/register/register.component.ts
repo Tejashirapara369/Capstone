@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserRole } from '../../models/authentication.model';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ export class RegisterComponent {
     private title: Title,
     private fb: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     title.setTitle(COMPANY_NAME + ': Signup');
   }
@@ -35,6 +37,7 @@ export class RegisterComponent {
   register(): void {
     this.authenticationService.register(this.registerForm.value).subscribe(resp => {
       localStorage.setItem("authToken", resp.token);
+      this.toastr.success("Signup successfully");
       this.router.navigate(['/']);
     });
   }
