@@ -19,8 +19,12 @@ export class AuthenticationService {
     private http: HttpClient,
     private router: Router
   ) {
-    const isLoggedIn = localStorage.getItem('authToken');
+    const isLoggedIn = this.loggedInUser;
     this.isLoggedIn.next(Boolean(isLoggedIn));
+  }
+
+  get loggedInUser(): AuthResponse {
+    return JSON.parse(localStorage.getItem("authToken") || "");
   }
 
   logout() {
@@ -32,11 +36,14 @@ export class AuthenticationService {
   login(payload: LoginPayload): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${ENVIRONMENT_URL}/login`, payload).pipe(tap(resp => {
       this.isLoggedIn.next(true);
-      localStorage.setItem("authToken", resp.token);
+      localStorage.setItem("authToken", JSON.stringify(resp));
     }));
   }
 
   register(payload: RegisterPayload): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${ENVIRONMENT_URL}/signup`, payload);
+    return this.http.post<AuthResponse>(`${ENVIRONMENT_URL}/signup`, payload).pipe(tap(resp => {
+      this.isLoggedIn.next(true);
+      localStorage.setItem("authToken", JSON.stringify(resp));
+    }));
   }
 }

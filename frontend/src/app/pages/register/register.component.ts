@@ -36,7 +36,6 @@ export class RegisterComponent {
 
   register(): void {
     this.authenticationService.register(this.registerForm.value).subscribe(resp => {
-      localStorage.setItem("authToken", resp.token);
       this.toastr.success("Signup successfully");
       this.router.navigate(['/']);
     });
