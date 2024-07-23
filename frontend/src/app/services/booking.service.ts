@@ -24,8 +24,6 @@ export class BookingService {
 
   async redirectToCheckout(slug: string) {
     const stripe = await this.stripePromise;
-    const authToken = localStorage.getItem('authToken');
-
     this.getStripeSession(slug)
       .subscribe(async (resp: any) => {
         const result = await stripe.redirectToCheckout({
@@ -35,7 +33,6 @@ export class BookingService {
   }
 
   getStripeSession(slug: string): Observable<any> {
-    const authToken = localStorage.getItem('authToken');
-    return this.http.get(`${ENVIRONMENT_URL}/checkout/${slug}`, { headers: { Authorization: `Bearer ${authToken}` } });
+    return this.http.get(`${ENVIRONMENT_URL}/checkout/${slug}`);
   }
 }

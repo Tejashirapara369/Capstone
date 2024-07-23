@@ -8,6 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/review.model';
 import { environment } from '../../../environments/environment';
+import { User } from '../../models/authentication.model';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-tour-detail',
@@ -17,6 +19,8 @@ import { environment } from '../../../environments/environment';
 export class TourDetailComponent implements OnInit {
 
   readonly imgUrl: string = environment.baseUrl + 'assets/tour-images/';
+  loggedInUser: User;
+  myReviewExist: boolean = true;
 
   tourDetails: Tour = new Tour();
   slugUrl: string;
@@ -33,8 +37,11 @@ export class TourDetailComponent implements OnInit {
     private bookingService: BookingService,
     private reviewService: ReviewService,
     private fb: FormBuilder,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+    private authService: AuthenticationService
+  ) {
+    this.loggedInUser = authService.loggedInUser?.data?.user;
+  }
 
   ngOnInit(): void {
     this.slugUrl = this.route.snapshot.params['slug'];
@@ -51,6 +58,8 @@ export class TourDetailComponent implements OnInit {
   getAllReviews() {
     this.reviewService.getAll().subscribe((resp: any) => {
       this.reviews = resp.data.data.filter((review: Review) => review.tour === this.tourDetails.id);
+      const myReviewIndex = this.reviews.findIndex(review => review.user._id === this.loggedInUser._id);
+      this.myReviewExist = myReviewIndex > -1;
     });
   }
 

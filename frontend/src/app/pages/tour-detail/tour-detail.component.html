@@ -47,19 +47,21 @@
 
         <hr class="mt-3">
         <div class="col-md-6 offset-md-3 col-12 mt-5" [formGroup]="reviewForm">
-            <h4 class="d-flex justify-content-between">
-                Review
-                <ngb-rating class="fs-2" [max]="5" formControlName="rating"></ngb-rating>
-            </h4>
+            <ng-container *ngIf="!myReviewExist">
+                <h4 class="d-flex justify-content-between">
+                    Review
+                    <ngb-rating class="fs-2" [max]="5" formControlName="rating"></ngb-rating>
+                </h4>
 
-            <div class="form-group">
-                <textarea class="form-control w-100" rows="3" formControlName="review"></textarea>
-            </div>
-            <div class="d-flex justify-content-end mt-2 mb-5">
-                <button class="btn btn-success ms-2" (click)="postReview()" [disabled]="reviewForm.invalid">Post
-                    Review</button>
-            </div>
-
+                <div class="form-group">
+                    <textarea class="form-control w-100" rows="3" formControlName="review"></textarea>
+                </div>
+                <div class="d-flex justify-content-end mt-2 mb-5">
+                    <button class="btn btn-success ms-2" (click)="postReview()" [disabled]="reviewForm.invalid">Post
+                        Review</button>
+                </div>
+            </ng-container>
+            <h4 *ngIf="myReviewExist">Reviews</h4>
             <div class="p-3 border rounded-2 mb-2 " *ngFor="let review of reviews">
                 <div class="d-flex">
                     <div class="flex-fill">
