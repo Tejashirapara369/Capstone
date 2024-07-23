@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ReviewPayload } from '../models/review.model';
 
-const ENVIRONMENT_URL = environment.baseUrl + '/review';
+const ENVIRONMENT_URL = environment.baseUrl + 'api/review';
 
 @Injectable({
   providedIn: 'root'

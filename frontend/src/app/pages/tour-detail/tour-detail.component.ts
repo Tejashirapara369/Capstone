@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/review.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-tour-detail',
@@ -14,6 +15,8 @@ import { Review } from '../../models/review.model';
   styleUrl: './tour-detail.component.scss'
 })
 export class TourDetailComponent implements OnInit {
+
+  readonly imgUrl: string = environment.baseUrl + 'assets/tour-images/';
 
   tourDetails: Tour = new Tour();
   slugUrl: string;

@@ -14,7 +14,7 @@ export class Tour {
     startLocation?: StartLocation;
     ratingsAverage: number = 0;
     ratingsQuantity?: number;
-    images?: string[];
+    images: string[] = [];
     startDates: string[] = [];
     guides?: any[];
     _id?: string;

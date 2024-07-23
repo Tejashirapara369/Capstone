@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { AuthResponse, LoginPayload, RegisterPayload } from '../models/authentication.model';
 import { Observable } from 'rxjs/internal/Observable';
 
-const ENVIRONMENT_URL = environment.baseUrl + '/tour';
+const ENVIRONMENT_URL = environment.baseUrl + 'api/tour';
 
 @Injectable({
   providedIn: 'root'

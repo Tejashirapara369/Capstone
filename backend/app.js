@@ -15,6 +15,8 @@ app.use(cors());
 
 dotenv.config({ path: "./config.env" });
 
+app.use('/assets', express.static('assets'));
+
 app.use("/api/user", userRouter);
 app.use("/api/tour", tourRouter);
 app.use("/api/review", reviewRouter);

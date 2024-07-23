@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Stripe } from '@stripe/stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const ENVIRONMENT_URL = environment.baseUrl + '/booking';
+const ENVIRONMENT_URL = environment.baseUrl + 'api/booking';
 
 @Injectable({
   providedIn: 'root'

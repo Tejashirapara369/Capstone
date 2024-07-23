@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
-const ENVIRONMENT_URL = environment.baseUrl + '/user';
+const ENVIRONMENT_URL = environment.baseUrl + 'api/user';
 
 @Injectable({
   providedIn: 'root'
