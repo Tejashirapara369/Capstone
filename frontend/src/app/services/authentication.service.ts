@@ -24,7 +24,8 @@ export class AuthenticationService {
   }
 
   get loggedInUser(): AuthResponse {
-    return JSON.parse(localStorage.getItem("authToken") || "");
+    const str = localStorage.getItem("authToken");
+    return str ? JSON.parse(str) : "";
   }
 
   logout() {
