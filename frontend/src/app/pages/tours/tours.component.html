@@ -2,7 +2,7 @@
     <div class="row g-4">
         <div class="col-md-4" *ngFor="let tour of tours">
             <div class="card">
-                <img [src]="imgUrl+tour.imageCover" class="card-img-top" onerror="src='https://placehold.co/400x200'"
+                <img [src]="tour.imageCover" class="card-img-top" onerror="src='https://placehold.co/400x200'"
                     [alt]="tour.name">
                 <div class="card-body">
                     <h5 class="card-title">{{tour.name | uppercase}}</h5>

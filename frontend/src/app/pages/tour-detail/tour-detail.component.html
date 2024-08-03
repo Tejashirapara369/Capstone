@@ -1,8 +1,18 @@
 <div class="container my-md-5 my-3">
     <div class="row">
         <div class="col-md-5 d-flex flex-column align-items-center">
-            <img [src]="imgUrl+tourDetails.images[0]" onerror="src='https://placehold.co/400x400'"
-                [alt]="tourDetails.name">
+
+            <ngb-carousel #carousel [interval]="2000" [pauseOnHover]="true" [pauseOnFocus]="true">
+                @for (img of tourDetails.images; track img; let i = $index) {
+                <ng-template ngbSlide>
+                    <a href="javascript:void(0);" target="_blank" rel="nofollow noopener noreferrer">
+                        <div class="picsum-img-wrapper">
+                            <img [src]="img" [alt]="tourDetails.name" />
+                        </div>
+                    </a>
+                </ng-template>
+                }
+            </ngb-carousel>
             <button class="btn btn-primary mt-3">
                 <h3 class="mb-0" (click)="checkout()">Book Now</h3>
             </button>
