@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgbCarouselModule, NgbDatepickerModule, NgbDropdownModule, NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToursComponent } from './pages/tours/tours.component';
 import { TourDetailComponent } from './pages/tour-detail/tour-detail.component';
@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
+import { authInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AngularFireModule } from '@angular/fire/compat';
   ],
   providers: [
     provideClientHydration(),
-    ToastrService
+    ToastrService,
+    provideHttpClient(withInterceptors([authInterceptor])),
   ],
   bootstrap: [AppComponent]
 })

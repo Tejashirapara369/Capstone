@@ -13,13 +13,10 @@ export class ReviewService {
   constructor(private http: HttpClient) { }
 
   postFeedback(tourId: string, payload: ReviewPayload) {
-    const authToken = localStorage.getItem('authToken');
-    return this.http.post(`${ENVIRONMENT_URL}/${tourId}`, payload, { headers: { Authorization: `Bearer ${authToken}` } });
+    return this.http.post(`${ENVIRONMENT_URL}/${tourId}`, payload);
   }
 
   getAll() {
-    const authToken = localStorage.getItem('authToken');
-
-    return this.http.get(ENVIRONMENT_URL, { headers: { Authorization: `Bearer ${authToken}` } });
+    return this.http.get(ENVIRONMENT_URL);
   }
 }
