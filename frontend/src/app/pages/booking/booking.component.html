@@ -1,6 +1,7 @@
 <div class="container my-md-5 my-3">
-    <div class="row">
-        <table class="table">
+    <h3 class="text-center">My Bookings</h3>
+    <div class="d-none d-md-block">
+        <table class="table ">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -18,9 +19,37 @@
                     <td>{{ tour.startLocation?.description }}</td>
                     <td>{{ tour.difficulty }}</td>
                     <td>{{ tour.duration }}</td>
-                    <td>{{ tour.price }}</td>
+                    <td>{{ tour.price | currency }}</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- mobile screen -->
+    <div class="d-md-none d-block">
+        <div class="card mb-3" *ngFor="let tour of myTours; let index = index">
+            <div class="row card-body g-3">
+                <div class="col-6">
+                    <strong>Tour</strong><br>
+                    {{ tour.name }}
+                </div>
+                <div class="col-6">
+                    <strong>Location</strong><br>
+                    {{ tour.startLocation?.description }}
+                </div>
+                <div class="col-4">
+                    <strong>Difficulty</strong><br>
+                    {{ tour.difficulty }}
+                </div>
+                <div class="col-4">
+                    <strong>Duration</strong><br>
+                    {{ tour.duration }}
+                </div>
+                <div class="col-4">
+                    <strong>Price</strong><br>
+                    {{ tour.price | currency }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
