@@ -21,6 +21,9 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
 import { authInterceptor } from './interceptor/auth.interceptor';
+import { BookingComponent } from './pages/booking/booking.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { authInterceptor } from './interceptor/auth.interceptor';
     NotFoundComponent,
     ToursComponent,
     TourDetailComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    BookingComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

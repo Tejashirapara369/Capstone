@@ -1,0 +1,26 @@
+<div class="container my-md-5 my-3">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tour</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Difficulty</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tour of myTours; let index = index">
+                    <th>{{ index+1 }}</th>
+                    <td>{{ tour.name }}</td>
+                    <td>{{ tour.startLocation?.description }}</td>
+                    <td>{{ tour.difficulty }}</td>
+                    <td>{{ tour.duration }}</td>
+                    <td>{{ tour.price }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

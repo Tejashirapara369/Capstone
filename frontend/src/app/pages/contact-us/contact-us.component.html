@@ -1,0 +1,68 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! If you have any questions, feedback, or need assistance, please feel free to
+                reach out to us using the form below or through our contact details.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 p-2">
+                <div class="card-body">
+                    <h3 class="mb-3">Contact Information</h3>
+                    <p><strong>Address:</strong> 108 University Ave, Waterloo, ON N2J 2W2</p>
+                    <p><strong>Phone:</strong> +(519) 885-0300</p>
+                    <p><strong>Email:</strong> support&#64;liveeasy.com</p>
+
+                    <h5 class="mb-3 mt-5"><strong>Operating Hours</strong></h5>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card p-2">
+                <div class="card-body">
+                    <h3 class="mb-3">Send Us a Message</h3>
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group mb-2">
+                            <label for="name">Name:</label>
+                            <input id="name" formControlName="name" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" formControlName="email" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="message">Message:</label>
+                            <textarea id="message" formControlName="message" class="form-control" rows="4"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Find Us Here</h3>
+                    <div class="d-flex justify-content-center">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2895.0989818455328!2d-80.52058382383235!3d43.479404671111006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf31d0cec9491%3A0x8bf5f60c306d2207!2sConestoga%20College%20Waterloo%20Campus!5e0!3m2!1sen!2sca!4v1722993144002!5m2!1sen!2sca"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

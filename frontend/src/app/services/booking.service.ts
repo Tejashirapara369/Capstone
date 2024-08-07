@@ -35,4 +35,8 @@ export class BookingService {
   getStripeSession(slug: string): Observable<any> {
     return this.http.get(`${ENVIRONMENT_URL}/checkout/${slug}`);
   }
+
+  getMyBookings(): Observable<any> {
+    return this.http.get(`${ENVIRONMENT_URL}/my-bookings`);
+  }
 }
