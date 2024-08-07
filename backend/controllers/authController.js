@@ -121,3 +121,39 @@ exports.restrict = (...roles) => {
     next();
   };
 };
+
+exports.isLoggedIn = async (req, res, next) => {
+  let token;
+  //1 check that in req header token exist
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+      token = req.headers.authorization.split(' ')[1];
+  }
+  if (token) {
+      try {
+          // 1) verify token
+          const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
+          
+          // 2) Check if user still exists
+          const currentUser = await User.findById(decoded.id);
+          if (!currentUser) {
+              return next();
+          }
+
+          // 3) Check if user changed password after the token was issued
+          if (currentUser.isPasswordChanged(decoded.id)) {
+              return next();
+          }
+
+          // THERE IS A LOGGED IN USER
+          res.locals.user = currentUser;
+
+          // console.log('res.locals.user', res.locals.user)
+          
+          return next();
+      } catch (err) {
+          console.log('err id', err);
+          return next();
+      }
+  }
+  next();
+};

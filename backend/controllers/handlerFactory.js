@@ -38,6 +38,12 @@ exports.updateOne = Model =>
 
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
+
+
+    if (Model.modelName === "Booking") {
+      req.body.user = req.user.id;
+    }
+
     const doc = await Model.create(req.body);
     res.status(201).json({
       status: "success",
@@ -83,6 +89,7 @@ exports.getAll = Model =>
 
     // EXECUTE THE QUERY
     const doc = await features.query;
+    
     //SEND RESPONSE
     res.status(200).json({
       status: "success",

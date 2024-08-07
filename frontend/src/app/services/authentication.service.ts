@@ -40,7 +40,6 @@ export class AuthenticationService {
       localStorage.setItem("authToken", JSON.stringify(resp));
     }));
   }
-
   register(payload: RegisterPayload): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${ENVIRONMENT_URL}/signup`, payload).pipe(tap(resp => {
       this.isLoggedIn.next(true);

@@ -133,17 +133,16 @@ tourSchema.pre("save", function (next) {
   next();
 });
 
-//QUERY Middleware
-
 tourSchema.pre(/^find/, function (next) {
   this.find({ isPublish: { $ne: false } });
   next();
 });
+
 tourSchema.pre(/^find/, function (next) {
   this.populate({
     path: "guides",
     select: "-__v -passwordChanged",
-  });
+  }); 
   next();
 });
 
