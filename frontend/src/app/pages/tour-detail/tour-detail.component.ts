@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TourService } from '../../services/tour.service';
 import { Tour } from '../../models/tours.model';
 import { BookingService } from '../../services/booking.service';
@@ -38,7 +38,8 @@ export class TourDetailComponent implements OnInit {
     private reviewService: ReviewService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {
     this.loggedInUser = authService.loggedInUser?.data?.user;
   }
@@ -64,7 +65,11 @@ export class TourDetailComponent implements OnInit {
   }
 
   checkout() {
-    this.bookingService.redirectToCheckout(this.slugUrl);
+    if (this.authService.isLoggedIn.getValue()) {
+      this.bookingService.redirectToCheckout(this.slugUrl);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   postReview() {
