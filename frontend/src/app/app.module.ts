@@ -54,7 +54,6 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot(environment.stripeKey),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [
     provideClientHydration(),
