@@ -10,6 +10,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: BookingComponent
+    component: BookingComponent,
+    canActivate: [authGuard] 
   },
   {
     path: 'about',
