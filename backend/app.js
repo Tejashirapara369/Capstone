@@ -9,7 +9,7 @@ const reviewRouter = require("./routes/reviewRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
 
 const corsOptions = {
-  origin: "http://localhost:4200", // Whitelist your frontend URL
+  origin: "https://mighty-journey-60470-e0111d45e7d6.herokuapp.com", // Whitelist your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // List allowed methods
 };
 

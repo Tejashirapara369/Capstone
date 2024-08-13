@@ -14,8 +14,8 @@ exports.getSession = catchAsync(async (req, res, next) => {
   if (tour) {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      success_url: `http://localhost:4200/booking-confirmed/${tour.id.toString()}/${tour.price}`,
-      cancel_url: `http://localhost:4200/tours/${tour.slug}`,
+      success_url: `https://mighty-journey-60470-e0111d45e7d6.herokuapp.com/booking-confirmed/${tour.id.toString()}/${tour.price}`,
+      cancel_url: `https://mighty-journey-60470-e0111d45e7d6.herokuapp.com/tours/${tour.slug}`,
       customer_email: req.user.email,
       client_reference_id: req.params.tourId,
       line_items: [
