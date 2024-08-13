@@ -39,4 +39,8 @@ export class BookingService {
   getMyBookings(): Observable<any> {
     return this.http.get(`${ENVIRONMENT_URL}/my-bookings`);
   }
+
+  confirmBooking(tour: string, price: number): Observable<any> {
+    return this.http.post(`${ENVIRONMENT_URL}`, { tour, price });
+  }
 }

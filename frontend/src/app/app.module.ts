@@ -19,11 +19,11 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from '../environments/environment';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireModule } from '@angular/fire/compat';
 import { authInterceptor } from './interceptor/auth.interceptor';
 import { BookingComponent } from './pages/booking/booking.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { BookingConfirmedComponent } from './pages/booking-confirmed/booking-confirmed.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
     CheckoutComponent,
     BookingComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    BookingConfirmedComponent
   ],
   imports: [
     BrowserModule,

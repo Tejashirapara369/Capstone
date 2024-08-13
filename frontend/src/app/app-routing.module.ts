@@ -11,6 +11,7 @@ import { BookingComponent } from './pages/booking/booking.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { authGuard } from './guard/auth.guard';
+import { BookingConfirmedComponent } from './pages/booking-confirmed/booking-confirmed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,12 @@ const routes: Routes = [
   {
     path: 'booking',
     component: BookingComponent,
-    canActivate: [authGuard] 
+    canActivate: [authGuard]
+  },
+  {
+    path: 'booking-confirmed/:tour/:price',
+    component: BookingConfirmedComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'about',
